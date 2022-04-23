@@ -9,20 +9,22 @@ public class Codec {
     {
         
 
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        String choice = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                     + "0123456789"
                                     + "abcdefghijklmnopqrstuvxyz";
   
         
         StringBuilder sb = new StringBuilder(7);
+        
+        Random ran = new Random();
   
         for (int i = 0; i < 7; i++) {
   
           
-            int index = (int)(AlphaNumericString.length()* Math.random());
+            int index = ran.nextInt(7);
   
            
-            sb.append(AlphaNumericString .charAt(index));
+            sb.append(choice.charAt(index));
         }
   
         return sb.toString();
