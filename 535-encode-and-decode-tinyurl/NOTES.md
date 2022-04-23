@@ -1,5 +1,20 @@
-int index = (int)(choice.length()* Math.random());
+{
+s=generator();
+}
+while(map.containsKey(s));
+String str="http:// " + s;
 ​
-meaning==>Presumibily it tries to select randomly an index of the array.Math.random returns a double
-in the range of [0,1), so index is always set with a value within the indexes range of the array. I used to use Random.nextInt method for extract pseudocasual ints within a hiven range.
+map.put(str,longUrl);
+return str;
+}
+​
+// Decodes a shortened URL to its original URL.
+public String decode(String shortUrl) {
+return map.get(shortUrl);
+}
+}
+​
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.decode(codec.encode(url));
 ​
