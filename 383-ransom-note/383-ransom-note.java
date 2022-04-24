@@ -14,7 +14,7 @@ class Solution {
         for(int j=0;j<ransomNote.length();j++)
         {
             int k=map.getOrDefault(ransomNote.charAt(j),-1);
-            System.out.print(k + " ");
+            
             if(k<=0)
                 return false;
             else
