@@ -1,26 +1,26 @@
 class Solution {
     public int[] sortArrayByParity(int[] nums) {
         
-        int[] res = new int[nums.length];
+        int even=0;
+        int odd=nums.length-1;
         
-        int k=0;
-        
-        for(int i=0;i<nums.length;i++)
+        while(even<odd)
         {
-            if(nums[i]%2==0)
-            {   res[k]=nums[i];
-                k++;
+            if(nums[even]%2==0)
+                even++;
+            
+            else
+            { 
+                int temp = nums[odd];
+                nums[odd]=nums[even];
+                nums[even]=temp;
+                
+                odd--;
             }
+                
         }
         
-          for(int i=0;i<nums.length;i++)
-        {
-            if(nums[i]%2!=0)
-            {   res[k]=nums[i];
-                k++;
-            }
-        }
+        return nums;
         
-        return res;
     }
 }
