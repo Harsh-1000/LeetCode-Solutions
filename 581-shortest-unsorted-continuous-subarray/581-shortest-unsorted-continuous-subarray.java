@@ -1,67 +1,43 @@
 class Solution {
-    
-       
-    
-    private int[] minMax(int[] a)
-    {
-        
-        int[] res = new int[2];
-       
-        res[0]=Integer.MAX_VALUE;
-        
-        res[1]=Integer.MIN_VALUE;
-        
-        for(int i=0;i<a.length;i++)
-        {
-            if(a[i]<res[0])
-                res[0]=a[i];
-            
-            if(a[i]>res[1])
-                res[1]=a[i];
-        }
-        
-        return res;
-   }
-    
     public int findUnsortedSubarray(int[] nums) {
         
-    
+        int l = Integer.MAX_VALUE;
+        int r = Integer.MIN_VALUE;
         
-        
-        int start = 0;
-        int end = nums.length;
-        int[] res = new int[2];
-        
-
-        while(start<end)
+        for(int i = 0 ;i<nums.length-1;i++)
         {
-            int[] a = Arrays.copyOfRange(nums,start,end);
-            
-        
-            
-            res = minMax(a);
-                
-        
-            
-            if(res[0]!=a[0] && res[1]!=a[a.length-1])
-                return end-start;
-            
-            else if(res[0]==a[0] && res[1]!=a[a.length-1])
-                   start++;
-            
-            else if(res[0]!=a[0] && res[1]==a[a.length-1])
-                   end--;
-            else
-                 {    
-                  start++;
-                  end--;
-                  }
-            
+            if(nums[i]>nums[i+1] && l>nums[i+1])
+                l=nums[i+1];         
         }
         
-        return 0;
+        for(int i = nums.length-1 ;i>0 ; i--)
+        {
+            if(nums[i-1]>nums[i] && r<nums[i-1])
+                r=nums[i-1];
+        }
         
         
+        if(l==Integer.MAX_VALUE && r ==Integer.MIN_VALUE)
+            return 0;
+        
+        for(int i=0; i<nums.length;i++)
+        {
+            if(l<nums[i])
+            {   l=i;   
+              break;
+            }
+        }
+        
+        for(int i=nums.length-1 ;i>=0;i--)
+        {
+            if(r>nums[i])
+            {
+                r=i;
+                break;
+            }
+        }
+        
+        return r-l+1;
         
     }
 }
