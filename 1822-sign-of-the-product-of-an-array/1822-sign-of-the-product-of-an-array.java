@@ -4,7 +4,7 @@ class Solution {
     public int arraySign(int[] nums) {
         
         
-        int count=0;
+        int count=1;
         
         for(int i=0;i<nums.length;i++)
         {
@@ -13,13 +13,10 @@ class Solution {
                 return 0;
             
             if(nums[i]<0)
-                count++;
+                count*=-1;
         }
         
-        if(count%2==0)
-            return 1;
-        else
-            return -1;
+        return count;
         
         
         
