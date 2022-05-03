@@ -1,18 +1,6 @@
 class Solution {
     
-    private int numSum(int n)
-    {
-        int sum=0;
-        while(n>0)
-        {
-            int r = n%10;
-            sum+=r*r;
-            n=n/10;
-        }
-        
-        return sum;
-        
-    }
+
     
     
     public boolean isHappy(int n) {
@@ -23,7 +11,14 @@ class Solution {
         
         while(n!=1)
         {
-            n=numSum(n);
+            int sum=0;
+        while(n>0)
+        {
+            int r = n%10;
+            sum+=r*r;
+            n=n/10;
+        }
+        n=sum;
             
             if(seen.contains(n))
                 return false;
