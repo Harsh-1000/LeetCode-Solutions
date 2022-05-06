@@ -2,17 +2,20 @@ class Solution {
     public boolean isPalindrome(int x) {
         
         
-        int n=x;
-        int sum=0;
-        while(n>0)
+        String str = Integer.toString(x);
+        
+        int s = 0;
+        int e = str.length()-1;
+        
+        while(s<e)
         {
-            int r = n % 10;
-            n=n/10;
+            if(str.charAt(s)!=str.charAt(e))
+                return false;
             
-            sum = sum*10 + r;
-            
+            s++;
+            e--;
         }
         
-        return sum==x;
+        return true;
     }
 }
