@@ -1,49 +1,20 @@
 class Solution {
-    
-    private static int help(int n, int sum ,int[] cost, int[] memo)
-    
-    {
-        
-        
-         if(n>cost.length)
-        {
-            return 0;
-        }
-        
-        
-        if(n==cost.length-1 || n==cost.length-2)
-        {
-            sum+=cost[n];
-            return sum;
-        }
-        
-        if(memo[n]!=-1)
-            return memo[n];
-        
-  
-        sum+=Math.min(help(n+1,sum,cost,memo),help(n+2,sum,cost,memo));
-        sum+=cost[n];
-        
-        memo[n] = sum;
-        
-        return memo[n];
-        
-    }
-    
-    
     public int minCostClimbingStairs(int[] cost) {
+        
         
         int[] memo = new int[cost.length];
         
-        for(int i=0;i<cost.length;i++)
-            memo[i]=-1;
+        memo[0]=cost[0];
+        memo[1]=cost[1]; 
+        
+        for(int i=2;i<cost.length;i++)
+        {
+            memo[i]= cost[i] + Math.min(memo[i-1] , memo[i-2]);
+            
+        }
         
         
-        int step1= help(0,0,cost,memo);
-        int step2= help(1,0,cost,memo);
         
-        return Math.min(step1,step2);
- 
-        
+        return Math.min(memo[cost.length-1], memo[cost.length-2]);
     }
 }
