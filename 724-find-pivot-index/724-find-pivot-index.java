@@ -2,8 +2,8 @@ class Solution {
     public int pivotIndex(int[] nums) 
     {
         
-        int l=0;
-        int r=nums.length-1;
+        if(nums.length==0)
+            return 0;
         
         int sl = 0;
         int sr = 0;
