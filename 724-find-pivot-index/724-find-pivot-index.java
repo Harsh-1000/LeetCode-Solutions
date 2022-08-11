@@ -17,9 +17,9 @@ class Solution {
         
         for(int i=0;i<nums.length;i++)
         {
-            sr = total - nums[i] - sl;
+            total -= nums[i];
             
-            if(sr==sl)
+            if(total==sl)
                 return i;
             
             sl += nums[i];
