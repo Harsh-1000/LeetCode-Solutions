@@ -14,7 +14,7 @@ class Solution {
         int a=0,b=0,sum=0;
         int carry=0;
         
-        ListNode l3 = new ListNode();
+        ListNode l3 = new ListNode(0);
         
         ListNode head =l3;
         
