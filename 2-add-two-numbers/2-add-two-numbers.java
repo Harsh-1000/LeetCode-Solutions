@@ -9,91 +9,61 @@
  * }
  */
 class Solution {
-    
-    private static void store(Queue s,ListNode l)
-    {
-        while(l!=null)
-        {
-            s.add(l.val);
-            l=l.next;
-        }
-    }
-    
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         
-         Queue<Integer> num1 = new LinkedList<>();
-          Queue<Integer> num2 = new LinkedList<>();
-        
-        Queue<Integer> res = new LinkedList<>();
-        
-        store(num1,l1);
-        store(num2,l2);
-        
+        int a=0,b=0,sum=0;
         int carry=0;
         
-        int a=0;
-        int b=0;
+        ListNode l3 = new ListNode();
         
-        while( !(num1.isEmpty()) || !(num2.isEmpty()) )
+        ListNode head =l3;
+        
+        while(l1!=null || l2!=null)
         {
-            if(!(num1.isEmpty()))
-                  a = num1.poll();
-            else a=0;
+            sum=0;
             
-             if(!(num2.isEmpty()))
-                  b = num2.poll();
-            else b=0;
-            
-           
-            int sum=0;
-            
-            if(carry>0)
+            if(l1!=null)
             {
-                 sum=a+b+carry;   
-            }
+                
+               a=l1.val;
+               l1=l1.next;
+            }   
+            
+            else
+                a=0;
+            
+            if(l2!=null)
+            {
+                
+               b=l2.val;
+               l2=l2.next;
+
+            }   
+            else
+                b=0;
+            
+            sum = a + b + carry;
+            
+            carry = sum / 10;
+            
+            
+            if(head==null)
+                 head= new ListNode(sum%10);
             else
             {
-                 sum=a+b;
-            }
+                 head.next =  new ListNode(sum%10);
+                 head = head.next;
+            } 
             
-            if(sum>=10)
-            {
-                res.add(sum%10);
-                carry=sum/10; 
-              
-            }
-            else
-            {
-                res.add(sum);
-                carry=0;
-            }
             
+                
         }
         
         if(carry>0)
         {
-            res.add(carry);
+             head.next =  new ListNode(carry);
         }
         
-    
-        
-        ListNode l3 = new ListNode(res.poll());
-        
-        ListNode head=l3;
-        
-        
-        while(!res.isEmpty())
-        {
-            ListNode temp = new ListNode(res.poll());
-            
-            head.next=temp;
-            head=head.next;
-        }
-            
-        
-        return l3;
-        
-        
-        
+        return l3.next;
     }
 }
