@@ -4,9 +4,13 @@ class Solution {
     {
         while(start<end)
         {
-             nums[start] = nums[start] + nums[end];
-             nums[end] = nums[start] - nums[end];
-             nums[start] = nums[start] - nums[end];
+             // nums[start] = nums[start] + nums[end];
+             // nums[end] = nums[start] - nums[end];
+             // nums[start] = nums[start] - nums[end];
+            
+            int a = nums[start];
+            nums[start] = nums[end];
+            nums[end] = a;
             
              start++;
              end--;
@@ -17,7 +21,7 @@ class Solution {
     {
         
        
-                k=k%(nums.length);
+            k = k % (nums.length);
             
             rotate(nums,nums.length-k,nums.length-1);
             rotate(nums,0,nums.length-k-1);
