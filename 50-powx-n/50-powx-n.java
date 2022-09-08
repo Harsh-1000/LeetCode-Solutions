@@ -20,7 +20,7 @@ class Solution {
              if(num>0)
                num=num-1;
              else
-               num = num+1;  
+               num=num+1;  
          }
      }
         
