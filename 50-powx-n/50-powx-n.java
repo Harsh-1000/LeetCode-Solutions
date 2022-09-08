@@ -5,10 +5,7 @@ class Solution {
       
      double ans=1.0;   
      int num =n;   
-     if(n<0)
-     {
-         num=num*-1;
-     }
+     
      
      while(num!=0)
      {
