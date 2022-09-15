@@ -1,7 +1,6 @@
 class Solution {
     public int[] findOriginalArray(int[] changed) {
         
-        Arrays.sort(changed);
             
         if(changed.length%2!=0) return new int[0];
         
@@ -14,10 +13,12 @@ class Solution {
         for(int no : changed)
             freq[no]++;
         
+        
         int idx=0;
         
-        for(int no: changed){
-            if(freq[no] > 0 && no*2 <= 100000 && freq[no*2]>0){
+        for(int no=0; no<freq.length; no++){
+            
+            while(freq[no] > 0 && no*2 < 100001 && freq[no*2]>0){
                 freq[no]--;
                 freq[no*2]--;
                 res[idx++] = no;
