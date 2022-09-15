@@ -1,36 +1,31 @@
 class Solution {
     public int[] findOriginalArray(int[] changed) {
-        
-            
-        if(changed.length%2!=0) return new int[0];
-        
-        int mid = changed.length/2;
-        
-        int[] res = new int[mid];
-        
-        int[] freq = new int[100001];
-        
-        for(int no : changed)
-            freq[no]++;
-        
-        
-        int idx=0;
-        
-        for(int no=0; no<freq.length; no++){
-            
-            while(freq[no] > 0 && no*2 < 100001 && freq[no*2]>0){
-                freq[no]--;
-                freq[no*2]--;
-                res[idx++] = no;
+        int n = changed.length;
+        if(n == 0 || n % 2 != 0) return new int[]{};
+        int max = Integer.MIN_VALUE;
+        for(int num : changed){
+            max = Math.max(max, num);
+        }
+        int[] bucket = new int[max + 1];
+        for(int num : changed){
+            bucket[num]++;
+        }
+        if(bucket[0] > 0 && bucket[0] % 2 != 0) return new int[]{};
+        int[] ans = new int[n/2];
+        int i = 0;
+        for(int j = 0; j <= max; j++){
+            if(i >= n/2) break;
+            if(bucket[j] > 0){
+                if(j * 2 > max || bucket[j * 2] == 0) return new int[]{};
+                else{
+                    bucket[j]--;
+                    bucket[j*2]--;
+                    ans[i] = j;
+                    i++;
+                    j--;
+                }
             }
         }
-        
-        for(int i=0; i<freq.length; i++){
-            if(freq[i]!=0) return new int[0];
-        }
-        
-        return res;
-        
-
+        return ans;
     }
 }
