@@ -9,7 +9,7 @@ class Solution {
     
     
         HashSet<String> set =  new HashSet<>();
-         HashSet<String> res =  new HashSet<>();
+         
         
         int si=0;
         int ei=0;
@@ -24,7 +24,8 @@ class Solution {
                
                 if(!set.add(str))
                 {
-                    res.add(str);
+                    if(!list.contains(str))
+                        list.add(str);
                 }
                 
                 si++;
@@ -37,7 +38,7 @@ class Solution {
         
         
         
-        return new ArrayList<>(res);
+        return list;
         
     }
 }
