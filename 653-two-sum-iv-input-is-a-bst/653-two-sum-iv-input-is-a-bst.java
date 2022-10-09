@@ -15,33 +15,177 @@
  */
 class Solution {
     
-     ArrayList<Integer> list = new ArrayList<>();
+     HashSet<Integer> set = new HashSet<>();
+     boolean res= false;
     
-    private void helper(TreeNode root)
+    private void dfs(TreeNode root,int k)
     {
         if(root==null)
             return;
         
-        helper(root.left);
-        list.add(root.val);
-        helper(root.right);
+        if(!set.contains(root.val))
+        {
+            set.add(k-root.val);
+        }
+        else
+        {
+            res = true; 
+        }
+        dfs(root.left,k);
+        dfs(root.right,k);
     }
-    
     public boolean findTarget(TreeNode root, int k) {
         
-        helper(root);
+        dfs(root,k);
         
-        for(int i=0;i<list.size()-1;i++)
-        {
-            for(int j=i+1;j<list.size();j++)
-                
-            {
-                if(k-list.get(i)==list.get(j))
-                    return true;
-            }
-        }
-        
-        return false;
-        
+        return res;
+            
+         
     }
-}
+}           
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
