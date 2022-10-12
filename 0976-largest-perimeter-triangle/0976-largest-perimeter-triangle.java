@@ -4,22 +4,14 @@ class Solution {
         Arrays.sort(nums);
         
         int i= nums.length-1;
-        int j= nums.length-2;
-        int k= nums.length-3;
-       
-        while(k>=0)
+     
+        while(i-2>=0)
         {
-            int a = nums[i];
-            int b = nums[j];
-            int c = nums[k];
-        
-            if(a+b>c && b+c>a && c+a>b)
-                return a+b+c;
-            
+          
+            if(nums[i]<nums[i-1]+nums[i-2])
+                return nums[i] + nums[i-1] + nums[i-2];
             i--;
-            j--;
-            k--;
-        }
+        } 
         
         return 0;
         
