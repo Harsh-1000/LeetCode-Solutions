@@ -13,11 +13,10 @@ class Solution {
         
         ListNode res = head;
         ListNode temp = head.next;
-        int sum=0;
         
         while(temp!=null)
         {
-            sum=0;
+            int sum=0;
             
             while(temp.val!=0)
             {
